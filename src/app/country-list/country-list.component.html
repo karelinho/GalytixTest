@@ -1,0 +1,5 @@
+<mat-grid-list cols="1" rowHeight="50px">
+    @for (country of countries; track country.code; let even = $even) {
+        <mat-grid-tile class="country-row" [style.background]="even ? 'lightblue' : 'lightgray'">{{ country.name }}</mat-grid-tile>
+    }
+</mat-grid-list>
