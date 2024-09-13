@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CountriesService } from '../services/countries.service';
-import { Country } from '../interfaces';
+import { Country, WeatherData } from '../interfaces';
+import { WeatherService } from '../services/weather.service';
 
 @Component({
   selector: 'app-country-list',
@@ -13,7 +14,11 @@ export class CountryListComponent implements OnInit {
 
   public countries: Country[] = [];
 
-  constructor(private countriesService: CountriesService, private changeDetectorRef: ChangeDetectorRef) {
+  constructor(
+    private countriesService: CountriesService,
+    private weatherService: WeatherService,
+    private changeDetectorRef: ChangeDetectorRef
+  ) {
     this.countriesService.loadCountries();
   }
   
@@ -26,4 +31,11 @@ export class CountryListComponent implements OnInit {
     );
   }
 
+  public showWeather(country: Country) {
+    this.weatherService.getWeather(country.name).subscribe((data: WeatherData) => {
+      country.weather = data;
+      this.changeDetectorRef.markForCheck();
+      console.log('DATA: ' + JSON.stringify(data));
+    });
+  }
 }

@@ -2,4 +2,13 @@ app-country-list {
     .country-row {
         cursor: pointer;
     }
+
+    .country-name {
+        font-weight: bold;
+    }
+
+    .weather-box,
+    .weather-item {
+        padding: 10px;
+    }
 }
