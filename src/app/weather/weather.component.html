@@ -1,0 +1,9 @@
+<p>Weather in {{ countryName }}</p>
+@if (selectedCountryWeather) {
+    <div class="weather-box">
+        <div class="weather-item">Temperature: {{ selectedCountryWeather.temperature }}</div>
+        <div class="weather-item">Precipitation: {{ selectedCountryWeather.precipitation }}</div>
+        <div class="weather-item">Wind speed: {{ selectedCountryWeather.wind.speed }}</div>
+        <div class="weather-item">Wind gust: {{ selectedCountryWeather.wind.gust }}</div>
+    </div>
+}

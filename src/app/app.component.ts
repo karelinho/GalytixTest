@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,4 +10,12 @@ import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/
 })
 export class AppComponent {
   title = 'GalytixTest';
+
+  constructor(private router: Router) {
+
+  }
+
+  public navigateHome() {
+    this.router.navigate(['']);
+  }
 }

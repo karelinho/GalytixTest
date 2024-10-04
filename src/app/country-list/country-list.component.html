@@ -1,15 +1,16 @@
+<div class="filter-box">
+    Filter: <input type="text" [(ngModel)]="filterValue" (ngModelChange)="onFilterChanged()" />
+</div>
 <mat-grid-list cols="1" rowHeight="50px">
-    @for (country of countries; track country.code; let even = $even) {
+    @for (country of selectedCountries; track country.code; let even = $even) {
         <mat-grid-tile class="country-row" [style.background]="even ? 'lightblue' : 'lightgray'" (click)="showWeather(country)">
             <div class="country-name">{{ country.name }}</div>
-            @if (country.weather) {
-                <div class="weather-box">
-                    <span class="weather-item">Temperature: {{ country.weather.temperature }}</span>
-                    <span class="weather-item">Precipitation: {{ country.weather.precipitation }}</span>
-                    <span class="weather-item">Wind speed: {{ country.weather.wind.speed }}</span>
-                    <span class="weather-item">Wind gust: {{ country.weather.wind.gust }}</span>
-                </div>
-            }
         </mat-grid-tile>
     }
 </mat-grid-list>
+<mat-paginator #paginator [length]="length"
+              [pageSize]="pageSize"
+              [pageIndex]="pageIndex"
+              (page)="handlePageEvent($event)"
+              aria-label="Select page">
+</mat-paginator>

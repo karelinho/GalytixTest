@@ -16,7 +16,6 @@ export class WeatherService {
     const options = CountQueuingStrategy ? { params: new HttpParams().set('q', country) } : {};
     return this.httpClient.get(this.weatherUrl, options).pipe(
       map((data: any) => {
-        console.log(data);
           return {
             temperature: data.main.temp,
             precipitation: data.weather[0].main,
